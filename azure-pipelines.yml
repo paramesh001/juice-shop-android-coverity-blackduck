@@ -13,6 +13,20 @@ steps:
 - script: echo Hello, param world! 
   displayName: 'Run a one-line script'
 
+- task: SynopsysPolaris@1
+  inputs:
+    polarisService: 'test01'
+    polarisCommand: 'polaris'
+    waitForIssues: true
+    populateChangeSetFile: true
+
+- task: BlackduckCoverityOnPolaris@2
+  inputs:
+    polarisService: 'test1'
+    polarisCommand: 'polaris'
+    waitForIssues: true
+    populateChangeSetFile: true
+
 - script: |
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
